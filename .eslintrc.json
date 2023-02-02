@@ -28,8 +28,8 @@
     // eslint와 prettier가 충돌나는 부분 비활성화 ( eslint-config-prettier )
     "prettier",
     "plugin:import/recommended",
-    //    "eslint:recommended",
-    //    "plugin:react/recommended",
+    "eslint:recommended",
+    "plugin:react/recommended",
     // cra, react-test 관련 추가
     "react-app",
     "react-app/jest",
