@@ -45,11 +45,14 @@
   },
   "proxy": "http://localhost:4000",
   "jest": {
-  "moduleNameMapper": {
-    "^@/(.*)$": "<rootDir>/src/$1"
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/src/practice"
+    ]
   },
-  "testPathIgnorePatterns" : [
-    "<rootDir>/src/practice"
-  ]
-}
+  "msw": {
+    "workerDirectory": "public"
+  }
 }

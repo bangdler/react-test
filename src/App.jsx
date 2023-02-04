@@ -1,12 +1,12 @@
 import React from 'react';
 
 import '@/App.css';
-import Type from '@/pages/OrderPage/Type';
+import OrderPage from '@/pages/OrderPage/OrderPage';
 
 function App() {
   return (
-    <div className="App">
-      <Type optionType={'products'} />
+    <div style={{ padding: '4rem' }}>
+      <OrderPage />
     </div>
   );
 }
