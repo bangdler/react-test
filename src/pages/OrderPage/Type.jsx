@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 
 import ErrorBanner from '@/components/ErrorBanner';
-import { OrderContext } from '@/contexts/OrderContext';
+import { OrderContext, pricePerItem } from '@/contexts/OrderContext';
 import Options from '@/pages/OrderPage/Options';
 import Products from '@/pages/OrderPage/Products';
 
@@ -39,8 +39,10 @@ export default function Type({ orderType }) {
   return (
     <>
       <h2>주문 종류 : {orderType}</h2>
-      <p>하나의 가격</p>
-      <p>{orderType} 총 가격 : {totals[orderType]}</p>
+      <p>하나의 가격 : ₩ {pricePerItem[orderType]}</p>
+      <p>
+        {orderType} 총 가격 : ₩ {totals[orderType]}
+      </p>
       <div style={{ display: 'flex', flexDirection: orderType === 'options' && 'column' }}>{optionItems}</div>
     </>
   );

@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useMemo, useState } from 'react';
 
 export const OrderContext = createContext();
 
-const pricePerItem = {
+export const pricePerItem = {
   products: 1000,
   options: 500,
 };

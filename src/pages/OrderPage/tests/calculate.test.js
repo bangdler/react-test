@@ -63,7 +63,6 @@ describe('total price of products and options', () => {
     const insuranceCheckbox = await screen.findByRole('checkbox', { name: 'Insurance' });
     userEvent.click(insuranceCheckbox);
     expect(total).toHaveTextContent('500');
-
   });
   test('update total price when removing products and options', async () => {
     render(<OrderPage />);

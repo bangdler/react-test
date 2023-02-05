@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { OrderContext } from '@/contexts/OrderContext';
 import Type from '@/pages/OrderPage/Type';
 
-export default function OrderPage() {
+export default function OrderPage({ setStep }) {
   const [{ totals }] = useContext(OrderContext);
   return (
     <div style={{ textAlign: 'center' }}>
@@ -15,10 +15,10 @@ export default function OrderPage() {
         <div style={{ width: '50%' }}>
           <Type orderType={'options'} />
         </div>
-        <div>
-          <h2>Total Price: {totals.total}</h2>
+        <div style={{ width: '50%' }}>
+          <h2>Total Price: ₩ {totals.total}</h2>
           <br />
-          <button>주문</button>
+          <button onClick={() => setStep(1)}>주문하기</button>
         </div>
       </div>
     </div>
