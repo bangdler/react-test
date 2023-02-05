@@ -1,5 +1,7 @@
 import { rest } from 'msw';
 
+const orderResults = [];
+
 export const handlers = [
   rest.get('/products', (req, res, ctx) => {
     return res(
@@ -13,8 +15,9 @@ export const handlers = [
   rest.get('/options', (req, res, ctx) => {
     return res(ctx.status(200, 'Mocked status'), ctx.json([{ name: 'Insurance' }, { name: 'Dinner' }]));
   }),
-  rest.post('/order', (req, res, ctx) => {
-    const dummyData = [{ orderNumber: 123112, price: 4500 }];
-    return res(ctx.json(dummyData));
+  rest.post('/order', async (req, res, ctx) => {
+    const data = await req.json();
+    orderResults.push({ orderNumber: Math.random().toString().substring(3, 7), price: data.totals.total });
+    return res(ctx.json(orderResults));
   }),
 ];

@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useEffect, useMemo, useState } from 'react';
 
 export const OrderContext = createContext();
 
@@ -31,14 +31,20 @@ export function OrderContextProvider({ children }) {
     });
   }, [orderCounts]);
 
-  const value = useMemo(() => {
-    const updateItemCount = (itemName, newItemCount, orderType) => {
+  const resetOrderCounts = useCallback(() => setOrderCounts({ products: new Map(), options: new Map() }), []);
+
+  const updateItemCount = useCallback(
+    (itemName, newItemCount, orderType) => {
       const newOrderCounts = { ...orderCounts };
       newOrderCounts[orderType].set(itemName, parseInt(newItemCount));
       setOrderCounts(newOrderCounts);
-    };
-    return [{ ...orderCounts, totals }, updateItemCount];
-  }, [orderCounts, totals]);
+    },
+    [orderCounts]
+  );
+
+  const value = useMemo(() => {
+    return [{ ...orderCounts, totals }, updateItemCount, resetOrderCounts];
+  }, [orderCounts, totals, resetOrderCounts, updateItemCount]);
 
   return <OrderContext.Provider value={value}>{children}</OrderContext.Provider>;
 }
