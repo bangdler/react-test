@@ -40,7 +40,7 @@ export default function Type({ orderType }) {
     <>
       <h2>주문 종류 : {orderType}</h2>
       <p>하나의 가격</p>
-      <p>상품 총 가격 : {totals[orderType]}</p>
+      <p>{orderType} 총 가격 : {totals[orderType]}</p>
       <div style={{ display: 'flex', flexDirection: orderType === 'options' && 'column' }}>{optionItems}</div>
     </>
   );

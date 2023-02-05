@@ -1,13 +1,13 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { rest } from 'msw';
 import React from 'react';
 
-import { OrderContextProvider } from '@/contexts/OrderContext';
 import { server } from '@/mocks/server';
 import Type from '@/pages/OrderPage/Type';
+import { render } from '@/test-utils';
 
 test('display product images from server', async () => {
-  render(<Type orderType={'products'} />, { wrapper: OrderContextProvider });
+  render(<Type orderType={'products'} />);
 
   // 비동기 요청의 경우 find 메서드
   const productImages = await screen.findAllByRole('img', { name: /product$/i });
@@ -25,13 +25,13 @@ test('when face error during fetching', async () => {
     })
   );
 
-  render(<Type orderType={'products'} />, { wrapper: OrderContextProvider });
+  render(<Type orderType={'products'} />);
   const errorBanner = await screen.findByTestId('error-banner');
   expect(errorBanner).toHaveTextContent('에러가 발생했습니다.');
 });
 
 test('fetch option information from server', async () => {
-  render(<Type orderType={'options'} />, { wrapper: OrderContextProvider });
+  render(<Type orderType={'options'} />);
 
   const optionCheckboxes = await screen.findAllByRole('checkbox');
   expect(optionCheckboxes).toHaveLength(2);

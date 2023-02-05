@@ -11,6 +11,6 @@ export const handlers = [
     );
   }),
   rest.get('/options', (req, res, ctx) => {
-    return res(ctx.status(200, 'Mocked status'), ctx.json([{ name: 'Insurance' }, { name: 'Diner' }]));
+    return res(ctx.status(200, 'Mocked status'), ctx.json([{ name: 'Insurance' }, { name: 'Dinner' }]));
   }),
 ];

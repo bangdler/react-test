@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
+import { OrderContext } from '@/contexts/OrderContext';
 import Type from '@/pages/OrderPage/Type';
 
 export default function OrderPage() {
+  const [{ totals }] = useContext(OrderContext);
   return (
     <div style={{ textAlign: 'center' }}>
       <h1>Travel Products</h1>
@@ -14,7 +16,7 @@ export default function OrderPage() {
           <Type orderType={'options'} />
         </div>
         <div>
-          <h2>Total Price:</h2>
+          <h2>Total Price: {totals.total}</h2>
           <br />
           <button>주문</button>
         </div>
