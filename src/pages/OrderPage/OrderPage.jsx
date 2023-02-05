@@ -2,7 +2,7 @@ import React from 'react';
 
 import Type from '@/pages/OrderPage/Type';
 
-export default function OrderPage({ name, imagePath }) {
+export default function OrderPage() {
   return (
     <div style={{ textAlign: 'center' }}>
       <h1>Travel Products</h1>
